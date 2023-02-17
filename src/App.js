@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 import styled from "styled-components";
 import { COLORS } from "./values/colors";
+import { FaGithub, FaFacebookSquare, FaExternalLinkAlt } from "react-icons/fa";
 
 const Container = styled.div`
   height: 100vh;
@@ -35,9 +35,8 @@ const OAuth2Btn = styled.button`
   justify-content: center;
   align-items: center;
 
-  & > img {
-    /* background-color: white; */
-    margin: 0 3px;
+  & > * {
+    margin: 0 5px;
   }
 `;
 
@@ -49,7 +48,6 @@ const LoginBox = styled.div`
   margin: 16px 0 24px 0;
   padding: 24px;
   border-radius: 5px;
-  /* box-shadow: 3px 3px 10px #7d7d7d; */
   box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
     0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
   font-size: 13px;
@@ -65,16 +63,23 @@ const LoginBox = styled.div`
     }
     label {
       color: ${COLORS.mainColor};
-      margin: 2px 0;
       font-size: 15px;
       font-weight: 600;
+    }
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    span {
+      color: ${COLORS.mainColor};
     }
     input[type="email"],
     input[type="password"] {
       width: 229.99px;
       height: 32.4px;
       /* padding: 7.8px 9.1px; */
-      margin-bottom: 16px;
+      margin: 5px 0 16px 0;
     }
     input[type="submit"] {
       width: 229.99px;
@@ -99,13 +104,6 @@ const ExtraMsg = styled.div`
 
 function App() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <a href="https://www.youtube.com/watch?v=m3sM0zIG1jY">
-    //       OMG by New Jeans
-    //     </a>
-    //   </header>
     <Container>
       <img
         src="https://www.vectorlogo.zone/logos/stackoverflow/stackoverflow-icon.svg"
@@ -121,29 +119,25 @@ function App() {
         Log in with Google
       </OAuth2Btn>
       <OAuth2Btn bgColor={COLORS.github}>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-          alt="GitHub Logo"
-          width="18"
-        />
+        <FaGithub size="18" alt="Github logo" />
         Log in with GitHub
       </OAuth2Btn>
-      <OAuth2Btn bgColor={COLORS.facebook}>Log in with Facebook</OAuth2Btn>
+      <OAuth2Btn bgColor={COLORS.facebook}>
+        <FaFacebookSquare size="18" alt="Facebook logo" />
+        Log in with Facebook
+      </OAuth2Btn>
       <LoginBox>
         <form action="">
-          <ul>
-            <li>
-              <label htmlFor="email_input">Email</label>
-              <input type="email" id="email_input" autoComplete="off" />
-            </li>
-            <li>
-              <label htmlFor="password_input">Password</label>
-              <input type="password" id="password_input" />
-            </li>
-            <li>
-              <input type="submit" value="Log in" />
-            </li>
-          </ul>
+          <label htmlFor="email_input">Email</label>
+          <input type="email" id="email_input" autoComplete="off" />
+          <div>
+            <label htmlFor="password_input">Password</label>
+            <span>
+              <a href="#">Forgot password?</a>
+            </span>
+          </div>
+          <input type="password" id="password_input" />
+          <input type="submit" value="Log in" />
         </form>
       </LoginBox>
       <ExtraMsg>
@@ -151,11 +145,18 @@ function App() {
           Don't have an account? <a href="#">Sign up</a>
         </p>
         <p>
-          Are you an employer? <a href="#">Sign up on Talent (icon)</a>
+          Are you an employer?{" "}
+          <a href="#">
+            Sign up on Talent
+            <FaExternalLinkAlt
+              size="13"
+              alt="external link icon"
+              style={{ marginLeft: 5 }}
+            />
+          </a>
         </p>
       </ExtraMsg>
     </Container>
-    // </div>
   );
 }
 
