@@ -35,7 +35,7 @@ const OAuth2Btn = styled.button`
   justify-content: center;
   align-items: center;
 
-  & > img{
+  & > img {
     /* background-color: white; */
     margin: 0 3px;
   }
@@ -134,16 +134,11 @@ function App() {
           <ul>
             <li>
               <label htmlFor="email_input">Email</label>
-              <input
-                type="email"
-                id="email_input"
-                role="textbox"
-                autoComplete="off"
-              />
+              <input type="email" id="email_input" autoComplete="off" />
             </li>
             <li>
               <label htmlFor="password_input">Password</label>
-              <input type="password" id="password_input" role="textbox" />
+              <input type="password" id="password_input" />
             </li>
             <li>
               <input type="submit" value="Log in" />
